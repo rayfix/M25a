@@ -11,6 +11,12 @@
 		5D7EDF3B26DB0698000D74D6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7EDF3A26DB0698000D74D6 /* ContentView.swift */; };
 		5D7EDF3D26DB0699000D74D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D7EDF3C26DB0699000D74D6 /* Assets.xcassets */; };
 		5D7EDF4026DB0699000D74D6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D7EDF3F26DB0699000D74D6 /* Preview Assets.xcassets */; };
+		5D7EDF4726DB16C7000D74D6 /* NumericKeypad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7EDF4626DB16C7000D74D6 /* NumericKeypad.swift */; };
+		5D7EDF4926DC3C73000D74D6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7EDF4826DC3C73000D74D6 /* Model.swift */; };
+		5D7EDF4B26DC3D78000D74D6 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7EDF4A26DC3D78000D74D6 /* ViewModel.swift */; };
+		5D7EDF4D26DC40CD000D74D6 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7EDF4C26DC40CD000D74D6 /* QuizView.swift */; };
+		5D7EDF4F26DC5AF3000D74D6 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7EDF4E26DC5AF3000D74D6 /* SummaryView.swift */; };
+		5D7EDF5126DC6C24000D74D6 /* ReviewResponseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7EDF5026DC6C24000D74D6 /* ReviewResponseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +25,12 @@
 		5D7EDF3A26DB0698000D74D6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5D7EDF3C26DB0699000D74D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D7EDF3F26DB0699000D74D6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5D7EDF4626DB16C7000D74D6 /* NumericKeypad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericKeypad.swift; sourceTree = "<group>"; };
+		5D7EDF4826DC3C73000D74D6 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		5D7EDF4A26DC3D78000D74D6 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		5D7EDF4C26DC40CD000D74D6 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
+		5D7EDF4E26DC5AF3000D74D6 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
+		5D7EDF5026DC6C24000D74D6 /* ReviewResponseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewResponseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +63,14 @@
 		5D7EDF3726DB0698000D74D6 /* M25a */ = {
 			isa = PBXGroup;
 			children = (
+				5D7EDF4826DC3C73000D74D6 /* Model.swift */,
+				5D7EDF4A26DC3D78000D74D6 /* ViewModel.swift */,
 				5D7EDF3826DB0698000D74D6 /* M25aApp.swift */,
 				5D7EDF3A26DB0698000D74D6 /* ContentView.swift */,
+				5D7EDF5026DC6C24000D74D6 /* ReviewResponseView.swift */,
+				5D7EDF4E26DC5AF3000D74D6 /* SummaryView.swift */,
+				5D7EDF4C26DC40CD000D74D6 /* QuizView.swift */,
+				5D7EDF4626DB16C7000D74D6 /* NumericKeypad.swift */,
 				5D7EDF3C26DB0699000D74D6 /* Assets.xcassets */,
 				5D7EDF3E26DB0699000D74D6 /* Preview Content */,
 			);
@@ -137,8 +155,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D7EDF4B26DC3D78000D74D6 /* ViewModel.swift in Sources */,
+				5D7EDF4F26DC5AF3000D74D6 /* SummaryView.swift in Sources */,
+				5D7EDF5126DC6C24000D74D6 /* ReviewResponseView.swift in Sources */,
 				5D7EDF3B26DB0698000D74D6 /* ContentView.swift in Sources */,
 				5D7EDF3926DB0698000D74D6 /* M25aApp.swift in Sources */,
+				5D7EDF4726DB16C7000D74D6 /* NumericKeypad.swift in Sources */,
+				5D7EDF4926DC3C73000D74D6 /* Model.swift in Sources */,
+				5D7EDF4D26DC40CD000D74D6 /* QuizView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +301,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,7 +331,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
