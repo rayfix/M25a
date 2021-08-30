@@ -28,43 +28,43 @@ struct QuizSummaryView: View {
 
 
   var body: some View {
-    VStack(alignment: .leading) {
-      Text("Accuracy: \(percentAccuracy)%")
-      Text("Median Time: \(medianTime)")
+    List {
+      Section(header: Text("Statistics")) {
+        Text("Accuracy: \(percentAccuracy)%")
+        Text("Median Time: \(medianTime)")
+      }
       if !grades.lazy.filter {!$0.isCorrect}.isEmpty {
-        Section {
-          Text("Incorrect Responses")
-          List(Array(grades.filter {!$0.isCorrect} .enumerated()), id: \.0) { (offset, grade) in
+        Section(header: Text("Incorrect Responses")) {
+
+          ForEach(Array(grades.filter {!$0.isCorrect} .enumerated()), id: \.0) { (offset, grade) in
             HStack {
               Image(systemName: "nosign")
               Text(grade.question.questionAndAnswer)
               Spacer()
               Text(grade.response).font(.footnote)
-                  .overlay(Text("--").foregroundColor(.red))
+                .overlay(Text("--").foregroundColor(.red))
             }
           }
         }
       }
 
       if !slowSorted.isEmpty {
-        Section {
-          Text("Slow Responses")
-          List(Array(slowSorted.enumerated()), id: \.0) { (offset, grade) in
+        Section(header: Text("Slow Responses")) {
+          ForEach(Array(slowSorted.enumerated()), id: \.0) { (offset, grade) in
             HStack {
               Image(systemName: "tortoise")
               Text(grade.question.questionAndAnswer)
               Spacer()
               if !grade.isCorrect {
                 Text(grade.response).font(.footnote)
-                    .overlay(Text("--").foregroundColor(.red))
+                  .overlay(Text("--").foregroundColor(.red))
               }
             }
           }
         }
       }
-      Section {
-        Text("Correct Responses")
-        List(Array(grades.filter {$0.isCorrect} .enumerated()), id: \.0) { (offset, grade) in
+      Section(header: Text("Correct Responses")) {
+        ForEach(Array(grades.filter {$0.isCorrect} .enumerated()), id: \.0) { (offset, grade) in
           Text(grade.question.questionAndAnswer)
         }
       }
@@ -80,11 +80,26 @@ struct Summary_Previews: PreviewProvider {
            shown: Date(),
            responseTime: 3, response: "100"),
      .init(question: MultiplicationQuestion(a: 11, b: 11),
-            shown: Date(),
-            responseTime: 10, response: "121"),
+           shown: Date(),
+           responseTime: 10, response: "121"),
      .init(question: MultiplicationQuestion(a: 12, b: 12),
-            shown: Date(),
-            responseTime: 2, response: "143"),
+           shown: Date(),
+           responseTime: 2, response: "143"),
+     .init(question: MultiplicationQuestion(a: 12, b: 12),
+           shown: Date(),
+           responseTime: 2, response: "143"),
+     .init(question: MultiplicationQuestion(a: 12, b: 12),
+           shown: Date(),
+           responseTime: 2, response: "143"),
+     .init(question: MultiplicationQuestion(a: 12, b: 12),
+           shown: Date(),
+           responseTime: 2, response: "143"),
+     .init(question: MultiplicationQuestion(a: 12, b: 12),
+           shown: Date(),
+           responseTime: 2, response: "143"),
+     .init(question: MultiplicationQuestion(a: 12, b: 12),
+           shown: Date(),
+           responseTime: 2, response: "143"),
     ]
   }
 

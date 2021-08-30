@@ -10,13 +10,12 @@ import SwiftUI
 
 struct ReviewResponseView: View {
 
-  let questionNumber: Int
-  let totalQuestionCount: Int
+  let progress: Progress
   let grade: Grade
 
   var body: some View {
     VStack {
-      Text("Question \(questionNumber) of \(totalQuestionCount)")
+      Text("Question \(progress.questionNumber) of \(progress.questionCount)")
       Group {
       if grade.isCorrect {
         Text("Correct").foregroundColor(.green)
@@ -50,16 +49,16 @@ struct ReviewResponse_Previews: PreviewProvider {
    static var previews: some View {
      NavigationView {
        VStack {
-         ReviewResponseView(questionNumber: 5, totalQuestionCount: 10,
+         ReviewResponseView(progress: Progress(index: 0, questionCount: 10),
                             grade: .init(question: MultiplicationQuestion(a: 10, b: 10),
                                          shown: Date(), responseTime: 1, response: "100"))
          Button("Next") { }.buttonStyle(BlueButton())
        }
      }
-     ReviewResponseView(questionNumber: 1, totalQuestionCount: 10,
+     ReviewResponseView(progress: Progress(index: 5, questionCount: 10),
                         grade: .init(question: MultiplicationQuestion(a: 10, b: 10),
                                      shown: Date(), responseTime: 10.11111, response: "100"))
-     ReviewResponseView(questionNumber: 1, totalQuestionCount: 10,
+     ReviewResponseView(progress: Progress(index: 0, questionCount: 10),
                         grade: .init(question: MultiplicationQuestion(a: 10, b: 10),
                                      shown: Date(), responseTime: 10, response: "101"))
    }

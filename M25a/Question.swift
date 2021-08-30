@@ -1,6 +1,5 @@
 //
 //  Model.swift
-//  Model
 //
 //  Created by Ray Fix on 8/29/21.
 //
@@ -48,16 +47,14 @@ struct Grade {
 
 // MARK: --
 
-struct MultiplicationQuestion: Question {
-  var a: Int
-  var b: Int
+struct Quiz {
+  var title: String
+  var details: String
+  var questions: [Question]
+}
 
-  // Conformance
-  var question: String { "\(a) ⨉ \(b)" }
-  var answer: String { "\(a*b)"}
-  var questionAndAnswer: String { "\(question) = \(answer)" }
-
-  var expectedMaximumResponseTime: TimeInterval {
-    return 5
-  }
+struct Progress {
+  var index: Int
+  var questionNumber: Int { index + 1 }
+  var questionCount: Int
 }

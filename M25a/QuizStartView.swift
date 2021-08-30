@@ -7,16 +7,13 @@
 
 import SwiftUI
 
-
 struct QuizStartView: View {
 
-  let title: String
-  let questionCount: Int
+  let quiz: Quiz
 
   var questions: String {
-    questionCount == 1 ?
-      "Only one question" :
-      "\(questionCount) questions"
+    quiz.questions.count == 1 ?
+      "Only one question" : "\(quiz.questions.count) questions"
   }
 
   var body: some View {

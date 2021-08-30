@@ -9,67 +9,59 @@ import SwiftUI
 
 struct QuizView: View {
 
-  @ObservedObject var quiz: Quiz
+  @ObservedObject var model: QuizViewModel
 
   var body: some View {
     Group {
-      switch quiz.state {
-      case .start:
+      switch model.state {
+      case .begin:
         VStack {
-          QuizStartView(title: quiz.title, questionCount: quiz.questions.count)
-          if !quiz.questions.isEmpty {
+          QuizStartView(quiz: model.quiz)
+          if !model.quiz.questions.isEmpty {
             Button("Start") {
-              quiz.questions = quiz.questions.shuffled()
-              quiz.state = .askQuestion(0)
+              model.start()
             }
-
           }
         }
-      case .askQuestion(let index):
+      case let .ask(progress,question):
         QuestionView(started: Date(),
-                     questionNumber: index+1,
-                     totalQuestionCount: quiz.questions.count,
-                     question: quiz.questions[index]) { grade in
-          quiz.grades.append(grade)
-          quiz.state = .reviewResponse(index, grade)
+                     progress: progress,
+                     question: question) { grade in
+          model.review(grade: grade)
         }
-      case .reviewResponse(let index, let grade):
+      case let .review(progress, grade):
         VStack {
-          ReviewResponseView(questionNumber: index+1,
-                             totalQuestionCount: quiz.questions.count,
+          ReviewResponseView(progress: progress,
                              grade: grade)
           Button("Next") {
-            let next = index+1
-            quiz.state = quiz.questions.indices.contains(next) ?
-              .askQuestion(next) : .summary
+            model.next()
           }
 
         }
-      case .summary:
+      case .summary(let grades):
         VStack {
-          QuizSummaryView(grades: quiz.grades)
+          QuizSummaryView(grades: grades)
+            .padding()
           Button("Retake") {
-            quiz.restart()
+            model.reset()
           }
         }
       }
     }
-    .navigationTitle("Quiz \(quiz.title)")
+    .navigationTitle("Quiz \(model.quiz.title)")
     .buttonStyle(BlueButton())
-    .onDisappear {
-      quiz.restart()
-    }
   }
 }
 
 struct QuizView_Previews: PreviewProvider {
   static let quiz = Quiz(title: "16",
+                         details: "Cool thing",
                          questions: (12...25).map {
     MultiplicationQuestion(a: 16, b: $0)
   }.shuffled())
 
   static var previews: some View {
-    QuizView(quiz: quiz)
+    QuizView(model: QuizViewModel(quiz: quiz))
       .previewDevice("iPhone 11 Pro Max")
   }
 }
