@@ -65,7 +65,7 @@ struct NumericKeypad: View {
   }
 
   var body: some View {
-    VStack {
+    VStack(spacing: 10) {
       HStack { digit(7) ; digit(8); digit(9) }
       HStack { digit(4) ; digit(5); digit(6) }
       HStack { digit(1) ; digit(2); digit(3) }

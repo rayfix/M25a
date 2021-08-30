@@ -69,7 +69,7 @@ struct QuizSummaryView: View {
         }
       }
     }
-    .navigationTitle("Results")
+    .navigationTitle("Quiz Results")
   }
 }
 

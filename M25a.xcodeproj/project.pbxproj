@@ -17,6 +17,7 @@
 		5D7EDF4D26DC40CD000D74D6 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7EDF4C26DC40CD000D74D6 /* QuizView.swift */; };
 		5D7EDF4F26DC5AF3000D74D6 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7EDF4E26DC5AF3000D74D6 /* SummaryView.swift */; };
 		5D7EDF5126DC6C24000D74D6 /* ReviewResponseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7EDF5026DC6C24000D74D6 /* ReviewResponseView.swift */; };
+		5D7EDF5326DC7720000D74D6 /* QuizStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7EDF5226DC7720000D74D6 /* QuizStartView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		5D7EDF4C26DC40CD000D74D6 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		5D7EDF4E26DC5AF3000D74D6 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		5D7EDF5026DC6C24000D74D6 /* ReviewResponseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewResponseView.swift; sourceTree = "<group>"; };
+		5D7EDF5226DC7720000D74D6 /* QuizStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizStartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				5D7EDF4A26DC3D78000D74D6 /* ViewModel.swift */,
 				5D7EDF3826DB0698000D74D6 /* M25aApp.swift */,
 				5D7EDF3A26DB0698000D74D6 /* ContentView.swift */,
+				5D7EDF5226DC7720000D74D6 /* QuizStartView.swift */,
 				5D7EDF5026DC6C24000D74D6 /* ReviewResponseView.swift */,
 				5D7EDF4E26DC5AF3000D74D6 /* SummaryView.swift */,
 				5D7EDF4C26DC40CD000D74D6 /* QuizView.swift */,
@@ -160,6 +163,7 @@
 				5D7EDF5126DC6C24000D74D6 /* ReviewResponseView.swift in Sources */,
 				5D7EDF3B26DB0698000D74D6 /* ContentView.swift in Sources */,
 				5D7EDF3926DB0698000D74D6 /* M25aApp.swift in Sources */,
+				5D7EDF5326DC7720000D74D6 /* QuizStartView.swift in Sources */,
 				5D7EDF4726DB16C7000D74D6 /* NumericKeypad.swift in Sources */,
 				5D7EDF4926DC3C73000D74D6 /* Model.swift in Sources */,
 				5D7EDF4D26DC40CD000D74D6 /* QuizView.swift in Sources */,

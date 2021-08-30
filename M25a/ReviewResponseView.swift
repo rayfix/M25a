@@ -24,12 +24,17 @@ struct ReviewResponseView: View {
         Text("Incorrect").foregroundColor(.red)
       }
       }.font(.largeTitle)
+      Spacer().frame(height: 30)
       Text(grade.question.questionAndAnswer).font(.largeTitle)
-      Text("Response Time: \(String(format: "%3.1f seconds", grade.responseTime))")
-
-      if grade.isCorrect && grade.isSlow {
-        Text("Try to improve your response time.")
+      if grade.isCorrect {
+        Text("Response Time: \(String(format: "%3.1f seconds", grade.responseTime))")
+        if grade.isSlow {
+          Text("Try to improve your response time.")
+        }
       }
+      Spacer().frame(height: 60)
+
+
       if !grade.isCorrect {
         HStack {
           Text("The answer is not ")

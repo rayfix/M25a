@@ -18,30 +18,6 @@ struct BlueButton: ButtonStyle {
     }
 }
 
-struct QuizStartView: View {
-
-  let title: String
-  let questionCount: Int
-
-  var questions: String {
-    questionCount == 1 ?
-      "Only one question" :
-      "\(questionCount) questions"
-  }
-
-  var body: some View {
-    VStack {
-      Spacer()
-      Text("Get Ready!").font(.largeTitle)
-      Text(" ").font(.largeTitle)
-      Text(title).font(.largeTitle)
-          Text(" ").font(.largeTitle)
-      Text(questions)
-      Spacer()
-    }
-  }
-}
-
 struct QuestionView: View {
 
   let started: Date

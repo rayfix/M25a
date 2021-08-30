@@ -25,6 +25,15 @@ final class Quiz: ObservableObject {
     self.questions = questions
     self.state = .start
   }
+
+  func summarize() {
+    state = .summary
+  }
+
+  func restart() {
+    state = .start
+    grades = []
+  }
 }
 
 extension MultiplicationQuestion {
@@ -48,7 +57,7 @@ extension MultiplicationQuestion {
     [
       (12...24).map { quiz(for: $0...$0) },
       [
-        quiz(for: 12...25, exclude: [10,11,22])
+        quiz(for: 12...25, exclude: [2,10,20,11,22])
       ]
     ].flatMap { $0 }
   }

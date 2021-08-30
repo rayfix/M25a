@@ -49,11 +49,16 @@ struct QuizView: View {
         VStack {
           QuizSummaryView(grades: quiz.grades)
           Button("Retake") {
-            quiz.state = .start
+            quiz.restart()
           }
         }
       }
-    }.buttonStyle(BlueButton())
+    }
+    .navigationTitle("Quiz \(quiz.title)")
+    .buttonStyle(BlueButton())
+    .onDisappear {
+      quiz.restart()
+    }
   }
 }
 
