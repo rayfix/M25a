@@ -54,6 +54,7 @@ struct QuizSummaryView: View {
           ForEach(Array(grades.filter {!$0.isCorrect} .enumerated()), id: \.0) { (offset, grade) in
             HStack {
               Label(grade.question.questionAndAnswer, systemImage: "nosign")
+                .accentColor(.red)
               Spacer()
               IncorrectText(grade.response)
             }
@@ -77,6 +78,7 @@ struct QuizSummaryView: View {
       Section(header: Text("Correct Responses")) {
         ForEach(Array(grades.filter {$0.isCorrect} .enumerated()), id: \.0) { (offset, grade) in
           Label(grade.question.questionAndAnswer, systemImage: "checkmark.square")
+            .accentColor(.green)
         }
       }
     }

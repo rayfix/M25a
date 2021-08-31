@@ -52,7 +52,7 @@ struct ReviewResponse_Previews: PreviewProvider {
          ReviewResponseView(progress: Progress(index: 0, count: 10)!,
                             grade: .init(question: MultiplicationQuestion(a: 10, b: 10),
                                          shown: Date(), responseTime: 1, response: "100"))
-         Button("Next") { }.buttonStyle(BlueButton())
+         Button("Next") { }.buttonStyle(BorderedButton())
        }
      }
      ReviewResponseView(progress: Progress(index: 5, count: 10)!,

@@ -18,9 +18,7 @@ struct ContentView: View {
         QuizSelectionView(quizzes: quizzes) { quiz in
           model.ready(quiz: quiz)
         }.navigationTitle("M25 Quiz List")
-
-      }
-      else {
+      } else {
         QuizView(model: model)
           .toolbar {
             Button("End") {

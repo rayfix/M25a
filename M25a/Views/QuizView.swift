@@ -46,7 +46,7 @@ struct QuizView: View {
       }
     }
     .navigationTitle("Quiz \(model.quiz?.title ?? "")")
-    .buttonStyle(BlueButton())
+    .buttonStyle(BorderedButton())
   }
 }
 
