@@ -14,10 +14,12 @@ struct QuizView: View {
   var body: some View {
     Group {
       switch model.state {
-      case .begin:
+      case .idle:
+        EmptyView()
+      case .ready(let quiz):
         VStack {
-          QuizStartView(quiz: model.quiz)
-          if !model.quiz.questions.isEmpty {
+          QuizStartView(quiz: quiz)
+          if !quiz.questions.isEmpty {
             Button("Start") {
               model.start()
             }
@@ -39,16 +41,11 @@ struct QuizView: View {
 
         }
       case .summary(let grades):
-        VStack {
-          QuizSummaryView(grades: grades)
-            .padding()
-          Button("Retake") {
-            model.reset()
-          }
-        }
+        QuizSummaryView(grades: grades)
+          .padding()
       }
     }
-    .navigationTitle("Quiz \(model.quiz.title)")
+    .navigationTitle("Quiz \(model.quiz?.title ?? "")")
     .buttonStyle(BlueButton())
   }
 }
@@ -60,8 +57,10 @@ struct QuizView_Previews: PreviewProvider {
     MultiplicationQuestion(a: 16, b: $0)
   }.shuffled())
 
+  static let model: QuizViewModel = QuizViewModel()
+
   static var previews: some View {
-    QuizView(model: QuizViewModel(quiz: quiz))
+    QuizView(model: Self.model)
       .previewDevice("iPhone 11 Pro Max")
   }
 }

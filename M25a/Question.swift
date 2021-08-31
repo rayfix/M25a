@@ -54,7 +54,20 @@ struct Quiz {
 }
 
 struct Progress {
+
+  init?(index: Int, count: Int) {
+    guard index < count else {
+      return nil
+    }
+    self.index = index
+    self.count = count
+  }
+
   var index: Int
-  var questionNumber: Int { index + 1 }
-  var questionCount: Int
+  var count: Int
+  var number: Int { index + 1 }
+
+  func next() -> Progress? {
+    Progress(index: index+1, count: count)
+  }
 }

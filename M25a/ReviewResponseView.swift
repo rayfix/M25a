@@ -15,7 +15,7 @@ struct ReviewResponseView: View {
 
   var body: some View {
     VStack {
-      Text("Question \(progress.questionNumber) of \(progress.questionCount)")
+      Text("Question \(progress.number) of \(progress.count)")
       Group {
       if grade.isCorrect {
         Text("Correct").foregroundColor(.green)
@@ -49,16 +49,16 @@ struct ReviewResponse_Previews: PreviewProvider {
    static var previews: some View {
      NavigationView {
        VStack {
-         ReviewResponseView(progress: Progress(index: 0, questionCount: 10),
+         ReviewResponseView(progress: Progress(index: 0, count: 10)!,
                             grade: .init(question: MultiplicationQuestion(a: 10, b: 10),
                                          shown: Date(), responseTime: 1, response: "100"))
          Button("Next") { }.buttonStyle(BlueButton())
        }
      }
-     ReviewResponseView(progress: Progress(index: 5, questionCount: 10),
+     ReviewResponseView(progress: Progress(index: 5, count: 10)!,
                         grade: .init(question: MultiplicationQuestion(a: 10, b: 10),
                                      shown: Date(), responseTime: 10.11111, response: "100"))
-     ReviewResponseView(progress: Progress(index: 0, questionCount: 10),
+     ReviewResponseView(progress: Progress(index: 0, count: 10)!,
                         grade: .init(question: MultiplicationQuestion(a: 10, b: 10),
                                      shown: Date(), responseTime: 10, response: "101"))
    }

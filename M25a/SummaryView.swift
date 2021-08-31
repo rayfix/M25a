@@ -7,6 +7,21 @@
 
 import SwiftUI
 
+struct IncorrectText: View {
+
+  init(_ response: String) {
+    self.response = response
+  }
+
+  let response: String
+
+  var body: some View {
+    Text(response).font(.footnote)
+      .overlay(Text("--").foregroundColor(.red))
+  }
+}
+
+
 struct QuizSummaryView: View {
   let grades: [Grade]
 
@@ -38,11 +53,9 @@ struct QuizSummaryView: View {
 
           ForEach(Array(grades.filter {!$0.isCorrect} .enumerated()), id: \.0) { (offset, grade) in
             HStack {
-              Image(systemName: "nosign")
-              Text(grade.question.questionAndAnswer)
+              Label(grade.question.questionAndAnswer, systemImage: "nosign")
               Spacer()
-              Text(grade.response).font(.footnote)
-                .overlay(Text("--").foregroundColor(.red))
+              IncorrectText(grade.response)
             }
           }
         }
@@ -52,12 +65,10 @@ struct QuizSummaryView: View {
         Section(header: Text("Slow Responses")) {
           ForEach(Array(slowSorted.enumerated()), id: \.0) { (offset, grade) in
             HStack {
-              Image(systemName: "tortoise")
-              Text(grade.question.questionAndAnswer)
+              Label(grade.question.questionAndAnswer, systemImage: "tortoise")
               Spacer()
               if !grade.isCorrect {
-                Text(grade.response).font(.footnote)
-                  .overlay(Text("--").foregroundColor(.red))
+                IncorrectText(grade.response)
               }
             }
           }
@@ -65,7 +76,7 @@ struct QuizSummaryView: View {
       }
       Section(header: Text("Correct Responses")) {
         ForEach(Array(grades.filter {$0.isCorrect} .enumerated()), id: \.0) { (offset, grade) in
-          Text(grade.question.questionAndAnswer)
+          Label(grade.question.questionAndAnswer, systemImage: "checkmark.square")
         }
       }
     }

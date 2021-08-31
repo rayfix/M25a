@@ -8,10 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
+
+  let quizzes = MultiplicationQuestion.quizzes()
+  @StateObject var model = QuizViewModel()
+
   var body: some View {
     NavigationView {
-      QuizListView()
-    }
+      if model.isIdle {
+        QuizSelectionView(quizzes: quizzes) { quiz in
+          model.ready(quiz: quiz)
+        }.navigationTitle("M25 Quiz List")
+
+      }
+      else {
+        QuizView(model: model)
+          .toolbar {
+            Button("End") {
+              model.canSummarize ? model.summarize() : model.reset()
+            }
+          }
+          .navigationTitle("Quiz \(model.quiz!.title)")
+      }
+    }.navigationViewStyle(.stack)
   }
 }
 

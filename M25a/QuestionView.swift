@@ -22,7 +22,7 @@ struct QuestionView: View {
 
   var body: some View {
     VStack {
-      Text("Question \(progress.questionNumber) of \(progress.questionCount)")
+      Text("Question \(progress.number) of \(progress.count)")
       Spacer().frame(height: 15)
       Text(question.question).font(.largeTitle)
       Text(entry).font(.largeTitle)
