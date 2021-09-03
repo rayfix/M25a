@@ -15,7 +15,9 @@ struct ContentView: View {
     NavigationView {
       QuizView(model: model)
         .toolbar {
-          Button("End") { model.endTapped() }
+          if model.canEnd {
+              Button("End") { model.endTapped() }
+          }
         }
         .navigationTitle(model.navigationTitle)
     }.navigationViewStyle(.stack)

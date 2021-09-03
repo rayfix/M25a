@@ -12,6 +12,7 @@ final class QuizSummaryViewModel {
   let grades: [Grade]
 
   init(grades: [Grade]) {
+    precondition(!grades.isEmpty)
     self.grades = grades
   }
 
@@ -25,11 +26,6 @@ final class QuizSummaryViewModel {
     return String(format: "%3.1f seconds", times[times.count/2])
   }
 
-  var slowSorted: [Grade] {
-    grades
-      .filter { $0.isSlow }
-      .sorted { $0.responseTime > $1.responseTime }
-  }
 
   var hasIncorrectResponses: Bool {
     !grades.allSatisfy { $0.isCorrect }
@@ -39,15 +35,25 @@ final class QuizSummaryViewModel {
     grades.filter { !$0.isCorrect }
   }
 
-  var hasSlowResponses: Bool {
-    !grades.allSatisfy { !$0.isSlow }
+  var hasSlowCorrectResponses: Bool {
+    grades.first { $0.isSlow && $0.isCorrect } != nil
+  }
+
+  var slowCorrectSorted: [Grade] {
+    grades
+      .filter { $0.isSlow && $0.isCorrect  }
+      .sorted { $0.responseTime > $1.responseTime }
   }
 
   var hasCorrectResponses: Bool {
-    grades.first { $0.isCorrect } != nil
+    grades.first { $0.isCorrect && !$0.isSlow } != nil
   }
 
   var correctResponses: [Grade] {
-    grades.filter { $0.isCorrect }
+    grades.filter { $0.isCorrect && !$0.isSlow }
+  }
+
+  var isPerfect: Bool {
+    grades.count == correctResponses.count
   }
 }

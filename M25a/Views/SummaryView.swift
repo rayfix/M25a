@@ -36,9 +36,9 @@ struct QuizSummaryView: View {
         }
       }
 
-      if model.hasSlowResponses {
+      if model.hasSlowCorrectResponses {
         Section(header: Text("Slow Responses")) {
-          ForEach(Array(model.slowSorted.enumerated()), id: \.0) { (offset, grade) in
+          ForEach(Array(model.slowCorrectSorted.enumerated()), id: \.0) { (offset, grade) in
             HStack {
               Label(grade.question.questionAndAnswer, systemImage: "tortoise")
               Spacer()

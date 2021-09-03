@@ -81,7 +81,8 @@ struct QuizStateMachine {
   }
 
   mutating func summarize() {
-    quiz = nil
     state = hasGrades ? .summary(grades) : .selecting(quizzes)
+    quiz = nil
+    grades = []
   }
 }

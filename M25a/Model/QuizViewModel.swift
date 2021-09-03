@@ -34,5 +34,15 @@ final class QuizViewModel: ObservableObject {
   func endTapped() {
     stateMachine.summarize()
   }
+
+  var canEnd: Bool {
+    switch state {
+    case .summary:
+      return true
+    case _:
+      return stateMachine.quiz != nil
+    }
+
+  }
 }
 
