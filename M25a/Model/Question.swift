@@ -6,6 +6,10 @@
 
 import Foundation
 
+protocol QuestionTemplate {
+  func prepare() -> Question
+}
+
 protocol Question {
   var question: String { get }
   var answer: String { get }
@@ -50,7 +54,19 @@ struct Grade {
 struct Quiz {
   var title: String
   var details: String
-  var questions: [Question]
+  var templates: [QuestionTemplate]
+
+  func prepareQuestions(shuffle: Bool, count: Int?) -> [Question] {
+
+    let count = count ?? templates.count
+    // TODO: Support count > questionTemplates.count
+
+    let questions = templates.prefix(count).map {
+      $0.prepare()
+    }
+
+    return shuffle ? questions.shuffled() : questions
+  }
 }
 
 struct Progress {

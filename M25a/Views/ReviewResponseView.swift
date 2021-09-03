@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct ReviewResponseView: View {
 
   let progress: Progress
@@ -33,12 +32,10 @@ struct ReviewResponseView: View {
       }
       Spacer().frame(height: 60)
 
-
       if !grade.isCorrect {
         HStack {
           Text("The answer is not ")
-          Text("\(grade.response).")
-            .overlay(Text("--").foregroundColor(.red))
+          Text(grade.response).strikethrough(color: .red)
         }
       }
     }

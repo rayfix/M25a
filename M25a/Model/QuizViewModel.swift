@@ -7,85 +7,32 @@
 import Foundation
 
 final class QuizViewModel: ObservableObject {
-
-  enum State {
-    case idle
-    case ready(Quiz)
-    case ask(Progress, Question)
-    case review(Progress, Grade)
-    case summary([Grade])
+  init(quizzes: [Quiz]) {
+    self.stateMachine = QuizStateMachine(quizzes: quizzes)
   }
 
-  private(set) var quiz: Quiz?
-  private var questions: [Question] = []
-  private var grades: [Grade] = []
-  @Published private(set) var state: State = .idle
+  @Published private(set) var stateMachine: QuizStateMachine
 
-  var isIdle: Bool {
-    switch state {
-    case .idle:
-      return true
-    case _:
-      return false
-    }
-  }
+  var state: QuizStateMachine.State { stateMachine.state }
 
-  func ready(quiz: Quiz) {
-    self.quiz = quiz
-    state = .ready(quiz)
-  }
+  var navigationTitle: String { stateMachine.quiz.map { "Quiz \($0.title)" } ?? "M25 Quiz List" }
 
-  func start(shuffle: Bool = true) {
-    guard let quiz = quiz else {
-      return
-    }
-    questions = shuffle ? quiz.questions.shuffled() : quiz.questions
-    grades = []
-    if let progress = Progress(index: 0, count: questions.count) {
-      state = .ask(progress, questions[0])
-    }
+  func select(quiz: Quiz) { stateMachine.select(quiz: quiz) }
+
+  func startTapped(shuffle: Bool = true) {
+    stateMachine.startQuiz(shuffle: shuffle, count: nil)
   }
 
   func review(grade: Grade) {
-    if case let .ask(progress, _) = state {
-      grades.append(grade)
-      state = .review(progress, grade)
-    }
+    stateMachine.review(grade: grade)
   }
 
-  func next() {
-    if case let .review(progress, _) = state {
-
-      guard let nextProgress = progress.next() else {
-        state = .summary(grades)
-        return
-      }
-      state = .ask(nextProgress, questions[nextProgress.index])
-    }
+  func nextTapped() {
+    stateMachine.nextQuestion()
   }
 
-  var canSummarize: Bool {
-    guard !grades.isEmpty else { return false }
-    if case .summary = state {
-      return false
-    }
-    return true
+  func endTapped() {
+    stateMachine.summarize()
   }
-
-
-  func summarize() {
-    state = .summary(grades)
-  }
-
-  func reset() {
-    state = .idle
-    questions = []
-    grades = []
-  }
-
-  var hasGrades: Bool {
-    !grades.isEmpty
-  }
-
 }
 

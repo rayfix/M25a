@@ -7,78 +7,55 @@
 
 import SwiftUI
 
-struct IncorrectText: View {
-
-  init(_ response: String) {
-    self.response = response
-  }
-
-  let response: String
-
-  var body: some View {
-    Text(response).font(.footnote)
-      .overlay(Text("--").foregroundColor(.red))
-  }
-}
-
-
 struct QuizSummaryView: View {
-  let grades: [Grade]
 
-  var percentAccuracy: String {
-    let fraction =  Double(grades.lazy.filter {$0.isCorrect}.count) / Double(grades.count)
-    return String(format: "%3.1f", fraction * 100)
-  }
-
-  var medianTime: String {
-    let times = grades.sorted { $0.responseTime < $1.responseTime }.map(\.responseTime)
-    return String(format: "%3.1f seconds", times[times.count/2])
-  }
-
-  var slowSorted: [Grade] {
-    grades
-      .filter { $0.isSlow }
-      .sorted { $0.responseTime > $1.responseTime }
-  }
-
+  let model: QuizSummaryViewModel
 
   var body: some View {
     List {
       Section(header: Text("Statistics")) {
-        Text("Accuracy: \(percentAccuracy)%")
-        Text("Median Time: \(medianTime)")
+        HStack { Text("Accuracy")
+          Spacer()
+          Text("\(model.percentAccuracy)%")
+        }
+        HStack { Text("Median Time");
+          Spacer();
+          Text("\(model.medianTime)")
+        }
       }
-      if !grades.lazy.filter {!$0.isCorrect}.isEmpty {
+      if model.hasIncorrectResponses {
         Section(header: Text("Incorrect Responses")) {
-
-          ForEach(Array(grades.filter {!$0.isCorrect} .enumerated()), id: \.0) { (offset, grade) in
+          ForEach(Array(model.incorrectResponses.enumerated()), id: \.0) { (offset, grade) in
             HStack {
               Label(grade.question.questionAndAnswer, systemImage: "nosign")
                 .accentColor(.red)
               Spacer()
-              IncorrectText(grade.response)
+              Text(grade.response).strikethrough(color: .red)
             }
           }
         }
       }
 
-      if !slowSorted.isEmpty {
+      if model.hasSlowResponses {
         Section(header: Text("Slow Responses")) {
-          ForEach(Array(slowSorted.enumerated()), id: \.0) { (offset, grade) in
+          ForEach(Array(model.slowSorted.enumerated()), id: \.0) { (offset, grade) in
             HStack {
               Label(grade.question.questionAndAnswer, systemImage: "tortoise")
               Spacer()
               if !grade.isCorrect {
-                IncorrectText(grade.response)
+                Text(grade.response).strikethrough(color: .red)
               }
             }
           }
         }
       }
-      Section(header: Text("Correct Responses")) {
-        ForEach(Array(grades.filter {$0.isCorrect} .enumerated()), id: \.0) { (offset, grade) in
-          Label(grade.question.questionAndAnswer, systemImage: "checkmark.square")
-            .accentColor(.green)
+
+      if model.hasCorrectResponses {
+        Section(header: Text("Correct Responses")) {
+          ForEach(Array(model.correctResponses.enumerated()), id: \.0) { (offset, grade) in
+            Label(grade.question.questionAndAnswer, systemImage: "checkmark")
+              .accentColor(.green)
+          }
         }
       }
     }
@@ -116,10 +93,9 @@ struct Summary_Previews: PreviewProvider {
     ]
   }
 
-
   static var previews: some View {
     NavigationView {
-      QuizSummaryView(grades: grades)
+      QuizSummaryView(model: QuizSummaryViewModel(grades: grades))
         .padding()
     }
   }

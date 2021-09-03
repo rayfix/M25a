@@ -12,8 +12,8 @@ struct QuizStartView: View {
   let quiz: Quiz
 
   var questions: String {
-    quiz.questions.count == 1 ?
-      "Only one question" : "\(quiz.questions.count) questions"
+    quiz.templates.count == 1 ?
+      "Only one question" : "\(quiz.templates.count) questions"
   }
 
   var body: some View {
