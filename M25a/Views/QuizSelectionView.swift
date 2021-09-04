@@ -17,7 +17,7 @@ struct QuizSelectionView: View {
         onSelect(quiz)
       } label: {
         Label("Quiz \(quiz.title)", systemImage: "doc.text")
-      }
+      }.buttonStyle(.plain)
     }
   }
 }

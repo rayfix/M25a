@@ -22,8 +22,9 @@ struct QuestionView: View {
 
   var body: some View {
     VStack {
-      Text("Question \(progress.number) of \(progress.count)")
-      Spacer().frame(height: 15)
+      QuizProgress(progress).padding()
+      BurndownView(totalTime: question.expectedMaximumResponseTime).padding([.leading, .trailing])
+      Spacer().frame(height: 40)
       Text(question.question).font(.largeTitle)
       Text(entry).font(.largeTitle)
       NumericKeypad(value: $entryValue) { value in

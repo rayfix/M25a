@@ -14,7 +14,8 @@ struct ReviewResponseView: View {
 
   var body: some View {
     VStack {
-      Text("Question \(progress.number) of \(progress.count)")
+      QuizProgress(progress).padding()
+      Spacer().frame(height: 50)
       Group {
       if grade.isCorrect {
         Text("Correct").foregroundColor(.green)

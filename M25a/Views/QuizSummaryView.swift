@@ -1,6 +1,5 @@
 //
-//  SummaryView.swift
-//  SummaryView
+//  QuizSummaryView.swift
 //
 //  Created by Ray Fix on 8/29/21.
 //
@@ -42,9 +41,8 @@ struct QuizSummaryView: View {
             HStack {
               Label(grade.question.questionAndAnswer, systemImage: "tortoise")
               Spacer()
-              if !grade.isCorrect {
-                Text(grade.response).strikethrough(color: .red)
-              }
+              Text(String(format: "%3.1f s", grade.responseTime))
+                .font(.footnote)
             }
           }
         }

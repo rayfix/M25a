@@ -15,7 +15,7 @@
 		5D7EDF4926DC3C73000D74D6 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7EDF4826DC3C73000D74D6 /* Question.swift */; };
 		5D7EDF4B26DC3D78000D74D6 /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7EDF4A26DC3D78000D74D6 /* QuizViewModel.swift */; };
 		5D7EDF4D26DC40CD000D74D6 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7EDF4C26DC40CD000D74D6 /* QuizView.swift */; };
-		5D7EDF4F26DC5AF3000D74D6 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7EDF4E26DC5AF3000D74D6 /* SummaryView.swift */; };
+		5D7EDF4F26DC5AF3000D74D6 /* QuizSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7EDF4E26DC5AF3000D74D6 /* QuizSummaryView.swift */; };
 		5D7EDF5126DC6C24000D74D6 /* ReviewResponseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7EDF5026DC6C24000D74D6 /* ReviewResponseView.swift */; };
 		5D7EDF5326DC7720000D74D6 /* QuizStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7EDF5226DC7720000D74D6 /* QuizStartView.swift */; };
 		5D7EDF5526DCA5C1000D74D6 /* QuizSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7EDF5426DCA5C1000D74D6 /* QuizSelectionView.swift */; };
@@ -24,6 +24,8 @@
 		5D7EDF5B26DCCB32000D74D6 /* MultiplicationQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7EDF5A26DCCB32000D74D6 /* MultiplicationQuestion.swift */; };
 		5DDBCC5126E2A74300466B38 /* QuizSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDBCC5026E2A74300466B38 /* QuizSummaryViewModel.swift */; };
 		5DDBCC5326E2C63F00466B38 /* QuizStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDBCC5226E2C63F00466B38 /* QuizStateMachine.swift */; };
+		5DDBCC5526E2EBF800466B38 /* QuizProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDBCC5426E2EBF800466B38 /* QuizProgressView.swift */; };
+		5DDBCC5726E2EC5900466B38 /* BurndownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDBCC5626E2EC5900466B38 /* BurndownView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +38,7 @@
 		5D7EDF4826DC3C73000D74D6 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		5D7EDF4A26DC3D78000D74D6 /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
 		5D7EDF4C26DC40CD000D74D6 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
-		5D7EDF4E26DC5AF3000D74D6 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
+		5D7EDF4E26DC5AF3000D74D6 /* QuizSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSummaryView.swift; sourceTree = "<group>"; };
 		5D7EDF5026DC6C24000D74D6 /* ReviewResponseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewResponseView.swift; sourceTree = "<group>"; };
 		5D7EDF5226DC7720000D74D6 /* QuizStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizStartView.swift; sourceTree = "<group>"; };
 		5D7EDF5426DCA5C1000D74D6 /* QuizSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSelectionView.swift; sourceTree = "<group>"; };
@@ -45,6 +47,8 @@
 		5D7EDF5A26DCCB32000D74D6 /* MultiplicationQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplicationQuestion.swift; sourceTree = "<group>"; };
 		5DDBCC5026E2A74300466B38 /* QuizSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSummaryViewModel.swift; sourceTree = "<group>"; };
 		5DDBCC5226E2C63F00466B38 /* QuizStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizStateMachine.swift; sourceTree = "<group>"; };
+		5DDBCC5426E2EBF800466B38 /* QuizProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizProgressView.swift; sourceTree = "<group>"; };
+		5DDBCC5626E2EC5900466B38 /* BurndownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BurndownView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,10 +87,12 @@
 			isa = PBXGroup;
 			children = (
 				5D7EDF5626DCA60D000D74D6 /* QuestionView.swift */,
+				5DDBCC5426E2EBF800466B38 /* QuizProgressView.swift */,
+				5DDBCC5626E2EC5900466B38 /* BurndownView.swift */,
 				5D7EDF5426DCA5C1000D74D6 /* QuizSelectionView.swift */,
 				5D7EDF5226DC7720000D74D6 /* QuizStartView.swift */,
 				5D7EDF5026DC6C24000D74D6 /* ReviewResponseView.swift */,
-				5D7EDF4E26DC5AF3000D74D6 /* SummaryView.swift */,
+				5D7EDF4E26DC5AF3000D74D6 /* QuizSummaryView.swift */,
 				5D7EDF4C26DC40CD000D74D6 /* QuizView.swift */,
 			);
 			path = Views;
@@ -203,13 +209,15 @@
 				5D7EDF5526DCA5C1000D74D6 /* QuizSelectionView.swift in Sources */,
 				5D7EDF4B26DC3D78000D74D6 /* QuizViewModel.swift in Sources */,
 				5DDBCC5126E2A74300466B38 /* QuizSummaryViewModel.swift in Sources */,
-				5D7EDF4F26DC5AF3000D74D6 /* SummaryView.swift in Sources */,
+				5D7EDF4F26DC5AF3000D74D6 /* QuizSummaryView.swift in Sources */,
 				5D7EDF5B26DCCB32000D74D6 /* MultiplicationQuestion.swift in Sources */,
 				5D7EDF5126DC6C24000D74D6 /* ReviewResponseView.swift in Sources */,
+				5DDBCC5726E2EC5900466B38 /* BurndownView.swift in Sources */,
 				5D7EDF3B26DB0698000D74D6 /* ContentView.swift in Sources */,
 				5D7EDF3926DB0698000D74D6 /* M25aApp.swift in Sources */,
 				5DDBCC5326E2C63F00466B38 /* QuizStateMachine.swift in Sources */,
 				5D7EDF5326DC7720000D74D6 /* QuizStartView.swift in Sources */,
+				5DDBCC5526E2EBF800466B38 /* QuizProgressView.swift in Sources */,
 				5D7EDF5726DCA60D000D74D6 /* QuestionView.swift in Sources */,
 				5D7EDF4726DB16C7000D74D6 /* NumericKeypad.swift in Sources */,
 				5D7EDF4926DC3C73000D74D6 /* Question.swift in Sources */,

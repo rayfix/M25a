@@ -30,20 +30,21 @@ struct QuizView: View {
         }
 
       case let .ask(progress,question):
-        QuestionView(started: Date(),
-                     progress: progress,
-                     question: question) { grade in
-          model.review(grade: grade)
+        VStack {
+          QuestionView(started: Date(),
+                       progress: progress,
+                       question: question) { grade in
+            model.review(grade: grade)
+          }
+          Color.clear
         }
-
       case let .review(progress, grade):
         VStack {
-          ReviewResponseView(progress: progress,
-                             grade: grade)
+          ReviewResponseView(progress: progress, grade: grade)
           Button("Next") {
             model.nextTapped()
           }
-
+          Spacer()
         }
       case .summary(let grades):
         QuizSummaryView(model: QuizSummaryViewModel(grades: grades))
