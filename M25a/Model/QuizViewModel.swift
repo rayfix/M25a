@@ -11,7 +11,7 @@ final class QuizViewModel: ObservableObject {
     self.stateMachine = QuizStateMachine(quizzes: quizzes)
   }
 
-  @Published private(set) var stateMachine: QuizStateMachine
+  @Published private var stateMachine: QuizStateMachine
 
   var state: QuizStateMachine.State { stateMachine.state }
 
