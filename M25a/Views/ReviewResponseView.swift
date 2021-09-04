@@ -26,7 +26,7 @@ struct ReviewResponseView: View {
       Spacer().frame(height: 30)
       Text(grade.question.questionAndAnswer).font(.largeTitle)
       if grade.isCorrect {
-        Text("Response Time: \(String(format: "%3.1f seconds", grade.responseTime))")
+        Text(String(format: "%3.1f seconds", grade.responseTime))
         if grade.isSlow {
           Text("Try to improve your response time.")
         }
