@@ -65,7 +65,7 @@ struct QuizView_Previews: PreviewProvider {
   static let model: QuizViewModel = QuizViewModel(quizzes: [quiz])
 
   static var previews: some View {
-    QuizView(model: Self.model)
+    ContentView()
       .previewDevice("iPhone 11 Pro Max")
   }
 }
